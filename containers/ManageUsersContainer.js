@@ -18,23 +18,33 @@ class ManageUsers extends Component {
    }
     
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUserSubmit = this.handleUserSubmit.bind(this)
+    this.handleGroupSubmit = this.handleGroupSubmit.bind(this)
   }
   
   handleChange(event) { 
     if (event.target.id === 'user') {
       this.setState({ userInputText: event.target.value })
     } else {
-    console.log(event.target.id) 
+      this.setState({ groupInputText: event.target.value })
     }
   }
   
-  handleSubmit() {
+  handleUserSubmit() {
     userRef.push({ name: this.state.userInputText })
     this.setState({ userInputText: '' })
   }
   
+  handleGroupSubmit() { 
+    let key = this.state.groupInputText
+    let newGroup = {}
+    newGroup[key] = { 'members': false }
+    groupRef.update(newGroup)
+    this.setState({ groupInputText: '' })
+  }
+  
   componentDidMount() {
+    
     //Reqeust users from firebase database
     userRef.once('value', (snapshot) => {
       let users = []
@@ -55,13 +65,17 @@ class ManageUsers extends Component {
       <div>
         <AddUser
           handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          handleUserSubmit={this.handleUserSubmit}
           text={this.state.userInputText}
         />
-        <AddGroup groupRef={groupRef} />
+        <AddGroup
+          handleChange={this.handleChange}
+          handleGroupSubmit={this.handleGroupSubmit}
+          text={this.state.groupInputText}
+        />
         <UserList users={this.state.users} />
       </div>
-      )
+    )
   }
 }
 

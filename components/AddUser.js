@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 //Presentation component
-const AddUser = ({ handleChange, handleSubmit, text }) => {
+const AddUser = ({ handleChange, handleUserSubmit, text }) => {
     return (
       <div>
         <input 
@@ -11,7 +11,7 @@ const AddUser = ({ handleChange, handleSubmit, text }) => {
           onChange={(event) => handleChange(event)}
           placeholder="add user"
         />
-        <button onClick={handleSubmit}>Add</button>
+        <button onClick={handleUserSubmit}>Add</button>
       </div>
     )
 }
@@ -21,6 +21,6 @@ export default AddUser
 //propTypes
 AddUser.propTypes = {
   handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  handleUserSubmit: PropTypes.func,
   text: PropTypes.string
 }
