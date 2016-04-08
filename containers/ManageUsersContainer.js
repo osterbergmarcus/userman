@@ -9,11 +9,29 @@ const groupRef = rootRef.child('groups')
 
 class ManageUsers extends Component {
   constructor(props) {
-    super(props);
-      this.state = {
-        users: [],
-        groups: {}
-      }
+    super(props)
+    this.state = { 
+      userInputText: '',
+      groupInputText: '',
+      users: [],
+      groups: {}  
+   }
+    
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  
+  handleChange(event) { 
+    if (event.target.id === 'user') {
+      this.setState({ userInputText: event.target.value })
+    } else {
+    console.log(event.target.id) 
+    }
+  }
+  
+  handleSubmit() {
+    userRef.push({ name: this.state.userInputText })
+    this.setState({ userInputText: '' })
   }
   
   componentDidMount() {
@@ -35,7 +53,11 @@ class ManageUsers extends Component {
   render() {
     return (
       <div>
-        <AddUser userRef={userRef} />
+        <AddUser
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          text={this.state.userInputText}
+        />
         <AddGroup groupRef={groupRef} />
         <UserList users={this.state.users} />
       </div>
