@@ -37,7 +37,8 @@ class ManageUsers extends Component {
   submitUser() {
     userRef.push({
       name: this.state.userInputText,
-      groups: false
+      groups: false,
+      date: Date()
     })
     this.setState({ userInputText: '' })
   }
@@ -58,7 +59,7 @@ class ManageUsers extends Component {
   }
   
   componentDidMount() {
-    //Request groups and listen to new events
+    // Request groups and listen to new events
     groupRef.on('value', (snapshot) => {
       let groups = []
       snapshot.forEach((child) => { 
@@ -72,14 +73,15 @@ class ManageUsers extends Component {
       groups = []
     })
       
-    //Request users and listen to new events
+    // Request users and listen to new events
     userRef.on('value', (snapshot) => {
       let users = []
       snapshot.forEach((child) => { 
         users.push({ 
           name: child.val().name,
           groups: child.val().groups,
-          uid: child.key()
+          uid: child.key(),
+          date: child.val().date
         })
       })
       this.setState({ users })
@@ -93,7 +95,7 @@ class ManageUsers extends Component {
       <div>
         <AddUser
           handleChange={this.handleChange}
-          submitUser={this.hsubmitUser}
+          submitUser={this.submitUser}
           text={this.state.userInputText}
         />
         <AddGroup

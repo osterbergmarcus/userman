@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react'
-import { ManageUsers }                 from './'
+import { ManageUsers, Nav }            from './'
 
 class App extends Component {
   render() {
     return (
       <div>
+        <Nav />
         <ManageUsers />
       </div>
       )

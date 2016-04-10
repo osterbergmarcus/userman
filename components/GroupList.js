@@ -1,25 +1,30 @@
 import React, { Component, PropTypes } from 'react'
 import Group                           from './Group'
 
+// Presentational component
 const GroupList = ({ groups, removeGroup }) => {
   return (
-    <div>
-    <select onChange={(event) => removeGroup(event)}>
-    <option value="selected">List groups</option>
-      {groups.map((group, index) => {
-        return (
-          <Group key={index} {...group} /> 
-        )
-      })}
-    </select>
+    <div className="container" id="groups">
+      <table>
+        <thead>
+          <tr>
+            <th>Group name</th>
+            <th>Members</th>
+          </tr>
+        </thead>
+        <tbody>
+          {groups.map((group, index) => (
+            <Group key={index} {...group} /> 
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
 
 export default GroupList
 
-//propTypes
+// propTypes
 GroupList.propTypes = {
-  groups: PropTypes.array,
-  removeGroup: PropTypes.func
+  groups: PropTypes.array
 }

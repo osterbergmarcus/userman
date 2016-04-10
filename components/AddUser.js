@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 
-//Presentation component
+// Presentational component
 const AddUser = ({ handleChange, submitUser, text }) => {
     return (
-      <div>
+      <div className="container">
         <input 
           type="text"
           id="user"
@@ -11,14 +11,14 @@ const AddUser = ({ handleChange, submitUser, text }) => {
           onChange={(event) => handleChange(event)}
           placeholder="add user"
         />
-        <button onClick={submitUser}>Add</button>
+        <button class ="add" onClick={submitUser}>Add</button>
       </div>
     )
 }
 
 export default AddUser
 
-//propTypes
+// propTypes
 AddUser.propTypes = {
   handleChange: PropTypes.func,
   submitUser: PropTypes.func,

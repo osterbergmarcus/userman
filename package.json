@@ -8,7 +8,7 @@
   },
   "author": "Marcus Osterberg",
   "license": "MIT",
-    "dependencies": {
+  "dependencies": {
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.3.13",
@@ -23,5 +23,10 @@
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.6.4"
+  },
+  "devDependencies": {
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0"
   }
 }

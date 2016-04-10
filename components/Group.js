@@ -1,9 +1,17 @@
 import React, { PropTypes } from 'react'
 
-const Group = ({ group }) => ( <option value={group}>{group}</option> )
+// Presentational component
+const Group = ({ group }) => { 
+  return (
+    <tr>
+      <td>{group}</td>
+    </tr>
+  )
+}
 
 export default Group
 
+// propTypes
 Group.propTypes = {
   group: PropTypes.string,
 }

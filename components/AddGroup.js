@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 
+// Presentational component
 const AddGroup = ({ handleChange, submitGroup, text }) => {
   return (
-    <div>
+    <div className="container">
       <input 
         type="text"
         value={text}
@@ -16,7 +17,7 @@ const AddGroup = ({ handleChange, submitGroup, text }) => {
 
 export default AddGroup
 
-//propTypes
+// propTypes
 AddGroup.propTypes = {
   handleChange: PropTypes.func,
   submitGroup: PropTypes.func,

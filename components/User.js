@@ -1,13 +1,21 @@
 import React, { Component, PropTypes } from 'react'
 
-const User = ({ name, groups }) => { 
+// Presentational component
+const User = ({ uid, name, editUser }) => { 
   return (
-    <li>{name} is member of </li>
+    <tr>
+      <td>{uid}</td>
+      <td>{name}</td>
+      <td><button onClick={editUser}>Edit</button></td>
+    </tr>
   )
 }
 
 export default User
 
+// propTypes
 User.propTypes = {
+  uid: PropTypes.string,
   name: PropTypes.string,
+  editUser: PropTypes.func
 }
