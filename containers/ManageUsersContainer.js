@@ -1,7 +1,10 @@
 import React, { Component, PropTypes } from 'react'
-import UserList                        from '../components/UserList'
-import AddUser                         from '../components/AddUser'
-import AddGroup                        from '../components/AddGroup'
+import {
+  AddUser,
+  AddGroup,
+  UserList,
+  GroupList
+} from '../components'
 
 const rootRef = new Firebase('https://usrmgmt.firebaseio.com/')
 const userRef = rootRef.child('users')
@@ -14,12 +17,13 @@ class ManageUsers extends Component {
       userInputText: '',
       groupInputText: '',
       users: [],
-      groups: {}  
+      groups: []  
    }
     
     this.handleChange = this.handleChange.bind(this)
-    this.handleUserSubmit = this.handleUserSubmit.bind(this)
-    this.handleGroupSubmit = this.handleGroupSubmit.bind(this)
+    this.submitUser = this.submitUser.bind(this)
+    this.submitGroup = this.submitGroup.bind(this)
+    this.removeGroup = this.removeGroup.bind(this)
   }
   
   handleChange(event) { 
@@ -30,27 +34,51 @@ class ManageUsers extends Component {
     }
   }
   
-  handleUserSubmit() {
-    userRef.push({ name: this.state.userInputText })
+  submitUser() {
+    userRef.push({
+      name: this.state.userInputText,
+      groups: false
+    })
     this.setState({ userInputText: '' })
   }
   
-  handleGroupSubmit() { 
+  submitGroup() { 
     let key = this.state.groupInputText
     let newGroup = {}
-    newGroup[key] = { 'members': false }
+    newGroup[key] = {  
+      'group': this.state.groupInputText,
+      'members': false 
+    }
     groupRef.update(newGroup)
     this.setState({ groupInputText: '' })
   }
   
+  removeGroup(event) {
+    groupRef.child(event.target.value).remove()
+  }
+  
   componentDidMount() {
-    
-    //Reqeust users from firebase database
-    userRef.once('value', (snapshot) => {
+    //Request groups and listen to new events
+    groupRef.on('value', (snapshot) => {
+      let groups = []
+      snapshot.forEach((child) => { 
+        groups.push({
+          group: child.val().group,
+          members: false
+        })
+      })
+      this.setState({ groups: groups })
+      console.log(groups)
+      groups = []
+    })
+      
+    //Request users and listen to new events
+    userRef.on('value', (snapshot) => {
       let users = []
       snapshot.forEach((child) => { 
         users.push({ 
-          name: child.val().name, 
+          name: child.val().name,
+          groups: child.val().groups,
           uid: child.key()
         })
       })
@@ -65,13 +93,17 @@ class ManageUsers extends Component {
       <div>
         <AddUser
           handleChange={this.handleChange}
-          handleUserSubmit={this.handleUserSubmit}
+          submitUser={this.hsubmitUser}
           text={this.state.userInputText}
         />
         <AddGroup
           handleChange={this.handleChange}
-          handleGroupSubmit={this.handleGroupSubmit}
+          submitGroup={this.submitGroup}
           text={this.state.groupInputText}
+        />
+        <GroupList
+          groups={this.state.groups}
+          removeGroup={this.removeGroup}
         />
         <UserList users={this.state.users} />
       </div>

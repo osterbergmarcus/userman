@@ -1,15 +1,9 @@
 import React, { PropTypes } from 'react'
 
-// Category.propTypes = {
-//   users: PropTypes.array
-// }
-
-const Group = ({ users }) => {
-    return (
-      <div>
-      
-      </div>
-      )
-}
+const Group = ({ group }) => ( <option value={group}>{group}</option> )
 
 export default Group
+
+Group.propTypes = {
+  group: PropTypes.string,
+}

@@ -4,13 +4,15 @@ import User                 from './User'
 //Stateless presentational component
 const UserList = ({ users }) => {
   return (
-    <ul>
-      {users.map((user) => {
-        return (
-          <User key={user.uid} {...user} /> 
-        )
-      })}
-    </ul>
+    <div class="container" id="users">
+      <ul>
+        {users.map((user) => {
+          return (
+            <User key={user.uid} {...user} /> 
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 

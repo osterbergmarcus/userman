@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-const AddGroup = ({ handleChange, handleGroupSubmit, text }) => {
+const AddGroup = ({ handleChange, submitGroup, text }) => {
   return (
     <div>
       <input 
@@ -9,7 +9,7 @@ const AddGroup = ({ handleChange, handleGroupSubmit, text }) => {
         onChange={handleChange}
         placeholder="add group"
       />
-      <button onClick={handleGroupSubmit}>Add</button>
+      <button onClick={submitGroup}>Add</button>
     </div>
   )
 }
@@ -19,6 +19,6 @@ export default AddGroup
 //propTypes
 AddGroup.propTypes = {
   handleChange: PropTypes.func,
-  handleGroupSubmit: PropTypes.func,
+  submitGroup: PropTypes.func,
   text: PropTypes.string
 }
