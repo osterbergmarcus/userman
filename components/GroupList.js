@@ -14,7 +14,10 @@ const GroupList = ({ groups, removeGroup }) => {
         </thead>
         <tbody>
           {groups.map((group, index) => (
-            <Group key={index} {...group} /> 
+            <Group
+              key={index}
+              {...group}
+            /> 
           ))}
         </tbody>
       </table>

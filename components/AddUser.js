@@ -11,7 +11,7 @@ const AddUser = ({ handleChange, submitUser, text }) => {
           onChange={(event) => handleChange(event)}
           placeholder="add user"
         />
-        <button class ="add" onClick={submitUser}>Add</button>
+        <button className="add" onClick={submitUser}>Add</button>
       </div>
     )
 }

@@ -10,7 +10,7 @@ const AddGroup = ({ handleChange, submitGroup, text }) => {
         onChange={handleChange}
         placeholder="add group"
       />
-      <button onClick={submitGroup}>Add</button>
+      <button className="add" onClick={submitGroup}>Add</button>
     </div>
   )
 }
