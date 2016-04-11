@@ -17,7 +17,7 @@ class ManageUsers extends Component {
       userInputText: '',
       groupInputText: '',
       users: [],
-      groups: []  
+      groups: []
    }
     
     this.handleChange = this.handleChange.bind(this)
@@ -26,7 +26,7 @@ class ManageUsers extends Component {
     this.removeGroup = this.removeGroup.bind(this)
   }
   
-  handleChange(event) { 
+  handleChange(event) {
     if (event.target.id === 'user') {
       this.setState({ userInputText: event.target.value })
     } else {
@@ -68,8 +68,8 @@ class ManageUsers extends Component {
           members: false
         })
       })
-      this.setState({ groups: groups })
-      console.log(groups)
+      this.setState({ groups })
+      console.log(this.state.groups)
       groups = []
     })
       
@@ -85,7 +85,6 @@ class ManageUsers extends Component {
         })
       })
       this.setState({ users })
-      console.log(this.state.users)
       users = []
     })
   }

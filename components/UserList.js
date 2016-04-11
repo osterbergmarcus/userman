@@ -13,12 +13,14 @@ const UserList = ({ users }) => {
             <th></th>
           </tr>
         </thead>
-        {users.map((user) => (
+        {users.map((user) => {
+          return (
             <User
               key={user.uid}
               {...user}
             />
-        ))}
+          )
+        })}
       </table>
     </div>
   )

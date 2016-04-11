@@ -2,22 +2,31 @@ import React, { Component, PropTypes } from 'react'
 
 // Firebase reference
 const userRef = new Firebase('https://usrmgmt.firebaseio.com/').child('users')
+const groupRef = new Firebase('https://usrmgmt.firebaseio.com/').child('groups')
 
 // Stateful component
 class User extends Component { 
   constructor(props) {
     super(props)
       this.state = {
-        editing: false
+        editing: false,
+        groupNames: []
       }
       
     this.editUser = this.editUser.bind(this)
     this.removeUser = this.removeUser.bind(this)
   }
-
+      
   editUser() {
     this.setState({ editing: !this.state.editing })
-    console.log(this.state.editing)
+    
+    groupRef.on('value', (snapshot) => {
+      let groupNames = []
+      snapshot.forEach((child) => { 
+        groupNames.push(child.val().group)
+      })
+      this.setState({ groupNames })
+    })
   }
   
   removeUser(uid) {
@@ -26,13 +35,21 @@ class User extends Component {
 
   render() {
     const { uid, name } = this.props
+    
+   let groupNames = this.state.groupNames.map((group, key) => {
+       return <option key={key} value={group}>{group}</option>
+     })
+  
     return (
       <tbody>
       {this.state.editing ? 
         <tr>
           <td>Assign {name} to
-            <select>
-              <option>1</option>
+            <select
+              ref="group-select"
+              defaultValue="">
+              <option defaultValue="">Select group</option>
+              {groupNames}
             </select>
           </td>
         </tr>
