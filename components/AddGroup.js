@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 // Presentational component
-const AddGroup = ({ handleChange, submitGroup, text }) => {
+const AddGroup = ({ handleChange, submitGroup, text, groups }) => {
   return (
     <div className="container">
       <input 
@@ -11,6 +11,7 @@ const AddGroup = ({ handleChange, submitGroup, text }) => {
         placeholder="add group"
       />
       <button className="add" onClick={submitGroup}>Add</button>
+      <div className="group-count">Groups: {groups}</div>
     </div>
   )
 }
@@ -21,5 +22,6 @@ export default AddGroup
 AddGroup.propTypes = {
   handleChange: PropTypes.func,
   submitGroup: PropTypes.func,
-  text: PropTypes.string
+  text: PropTypes.string,
+  groups: PropTypes.number
 }

@@ -23,7 +23,6 @@ class ManageUsers extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.submitUser = this.submitUser.bind(this)
     this.submitGroup = this.submitGroup.bind(this)
-    this.removeGroup = this.removeGroup.bind(this)
   }
   
   handleChange(event) {
@@ -47,15 +46,10 @@ class ManageUsers extends Component {
     let key = this.state.groupInputText
     let newGroup = {}
     newGroup[key] = {  
-      'group': this.state.groupInputText,
-      'members': false 
+      'group': this.state.groupInputText
     }
     groupRef.update(newGroup)
     this.setState({ groupInputText: '' })
-  }
-  
-  removeGroup(event) {
-    groupRef.child(event.target.value).remove()
   }
   
   componentDidMount() {
@@ -63,13 +57,10 @@ class ManageUsers extends Component {
     groupRef.on('value', (snapshot) => {
       let groups = []
       snapshot.forEach((child) => { 
-        groups.push({
-          group: child.val().group,
-          members: false
-        })
+        groups.push({ group: child.val().group })
       })
+      
       this.setState({ groups })
-      console.log(this.state.groups)
       groups = []
     })
       
@@ -96,16 +87,15 @@ class ManageUsers extends Component {
           handleChange={this.handleChange}
           submitUser={this.submitUser}
           text={this.state.userInputText}
+          users={this.state.users.length}
         />
         <AddGroup
           handleChange={this.handleChange}
           submitGroup={this.submitGroup}
           text={this.state.groupInputText}
+          groups={this.state.groups.length}
         />
-        <GroupList
-          groups={this.state.groups}
-          removeGroup={this.removeGroup}
-        />
+        <GroupList groups={this.state.groups} />
         <UserList users={this.state.users} />
       </div>
     )

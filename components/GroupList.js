@@ -2,14 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import Group                           from './Group'
 
 // Presentational component
-const GroupList = ({ groups, removeGroup }) => {
+const GroupList = ({ groups }) => {
   return (
     <div className="container" id="groups">
       <table>
         <thead>
           <tr>
-            <th>Group name</th>
-            <th>Members</th>
+            <th>Group names and members</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
