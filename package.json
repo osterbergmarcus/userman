@@ -1,5 +1,5 @@
 {
-  "name": "usrmgmt",
+  "name": "userman",
   "version": "1.0.0",
   "description": "User management",
   "main": "index.js",
