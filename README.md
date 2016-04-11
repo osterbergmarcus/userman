@@ -9,11 +9,9 @@ Supporting features:
 * Create groups
 * Assign users to selected groups
 * Remove users
-* Remove users from groups
+* Remove users from groups ( Click on user name )
 * Remove groups if groups are empty
 * User and Group count
-
-![task-manager](/content/screenshot.JPG?raw=true)
 
 Technologies used for this project:
 * React
