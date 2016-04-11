@@ -2,7 +2,7 @@
 
 A User manager created for demonstration purpose, written in JavaScript, html, css using React for UI and Firebase as a backend service.
 
-See demo [here](http://osterbergmarcus.github.io/usrmgmt/)
+See demo [here](http://osterbergmarcus.github.io/userman/)
 
 Supporting features:
 * Create unique users
