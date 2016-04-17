@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/osterbergmarcus/task-manager/master/content/usrmgmt-logo.png" alt="Task-Man" />
+<img src="https://raw.githubusercontent.com/osterbergmarcus/userman/master/content/usrmgmt-logo.png" alt="User-Man" />
 </p>
 
 # Intro
