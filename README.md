@@ -1,8 +1,14 @@
+<p align="center">
+<img src="https://raw.githubusercontent.com/osterbergmarcus/task-manager/master/content/usrmgmt-logo.png" alt="Task-Man" />
+</p>
+
 # Intro
 
 A User manager created for demonstration purpose, written in JavaScript, html, css using React for UI and Firebase as a backend service.
 
 See demo [here](http://osterbergmarcus.github.io/userman/)
+
+![task-manager](/content/userman.JPG?raw=true)
 
 Supporting features:
 * Create unique users
