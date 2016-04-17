@@ -2,18 +2,16 @@
 
 A User manager created for demonstration purpose, written in JavaScript, html, css using React for UI and Firebase as a backend service.
 
-See demo [here](http://osterbergmarcus.github.io/usrmgmt/)
+See demo [here](http://osterbergmarcus.github.io/userman/)
 
 Supporting features:
 * Create unique users
 * Create groups
 * Assign users to selected groups
 * Remove users
-* Remove users from groups
+* Remove users from groups ( Click on user name )
 * Remove groups if groups are empty
 * User and Group count
-
-![task-manager](/content/screenshot.JPG?raw=true)
 
 Technologies used for this project:
 * React
