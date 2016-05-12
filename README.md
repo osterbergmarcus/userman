@@ -18,6 +18,7 @@ Supporting features:
 * Remove users from groups ( Click on user name )
 * Remove groups if groups are empty
 * User and Group count
+* Data persistence
 
 Technologies used for this project:
 * React
